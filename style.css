@@ -32,6 +32,22 @@ button {
   cursor: pointer;
 }
 
+.contact-link button {
+  padding: 10px 20px;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Add transition for smooth effect */
+}
+
+.contact-link button:hover {
+  transform: scale(1.1); /* Enlarge on hover */
+  background-color: #333333; /* Darken color on hover */
+}
+
+
 /* HERO */
 .hero {
   text-align: center;
