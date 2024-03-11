@@ -69,6 +69,24 @@ h2 {
   margin-bottom: 15px;
 }
 
+.resume-btn,
+.projects-btn {
+  padding: 10px 20px;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Add transition for smooth effect */
+}
+
+.resume-btn:hover,
+.projects-btn:hover {
+  transform: scale(1.1); /* Enlarge on hover */
+  background-color: #333333; /* Darken color on hover */
+}
+
+
 /* ABOUT */
 .about-wrapper,
 .project-wrapper,
