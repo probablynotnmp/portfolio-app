@@ -21,7 +21,7 @@ html {
   justify-content: space-between;
   max-width: 1300px;
   margin: auto;
-  padding: 40px 20px;
+  padding: 20px;
 }
 
 button {
@@ -51,7 +51,7 @@ button {
 /* HERO */
 .hero {
   text-align: center;
-  height: 60vh;
+  height: 80vh;
   background: #181f26;
   margin-bottom: 80px;
   margin-top: -70px;
