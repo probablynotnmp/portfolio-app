@@ -24,12 +24,21 @@ html {
   padding: 20px;
 }
 
+nav a {
+  transition: color 0.3s ease; /* Add transition for smooth color change */
+}
+
+nav a:hover {
+  color: darkgray; /* Change color on hover */
+}
+
 button {
   background: #000000;
   border: none;
   border-radius: 5px;
   padding: 5px 12px;
   cursor: pointer;
+  transition: transform 0.3s ease; /* Add transition for smooth scaling */
 }
 
 .contact-link button {
@@ -39,7 +48,6 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: all 0.3s ease; /* Add transition for smooth effect */
 }
 
 .contact-link button:hover {
@@ -93,7 +101,7 @@ h2 {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: all 0.3s ease; /* Add transition for smooth effect */
+  transition: transform 0.3s ease; /* Add transition for smooth scaling */
 }
 
 .resume-btn:hover,
