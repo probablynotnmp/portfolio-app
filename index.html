@@ -7,6 +7,11 @@
   <link rel="icon" type="image/png" href="./assets/PRCROWN.png" />
   <link rel="stylesheet" href="./style.css" />
   <title>Prathyush N M</title>
+  <style>
+    canvas {
+      border: 1px solid #fff;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -25,7 +30,7 @@
       <br>
       <img class="profile-img" src="./assets/IMG_3495.JPG" />
     </div>
-    <h1 onclick="handleEasterEgg()">Hey, I'm Prathyush 🧑🏻‍💻🇮🇳</h1>
+    <h1 onclick="startPongGame()">Hey, I'm Prathyush 🧑🏻‍💻🇮🇳</h1>
     <style>
       a:hover {
         color: darkgray;
@@ -94,16 +99,44 @@
   </div>
 
   <script>
-    let clickCounter = 0;
+    function startPongGame() {
+      // Clear the body content
+      document.body.innerHTML = '';
 
-    function handleEasterEgg() {
-      clickCounter++;
+      // Create canvas element
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = 600;
+      canvas.height = 400;
+      document.body.appendChild(canvas);
 
-      if (clickCounter >= 5) {
-        alert("Congratulations! You found an Easter egg!");
-        clickCounter = 0;
+      // Paddle object
+      const paddle = {
+        width: 10,
+        height: 80,
+        x: 10,
+        y: canvas.height / 2 - 40,
+        speed: 8,
+        dy: 0
+      };
+
+      // Ball object
+      const ball = {
+        size: 10,
+        x: canvas.width / 2,
+        y: canvas.height / 2,
+        speed: 5,
+        dx: 5,
+        dy: 5
+      };
+
+      // Draw paddle
+      function drawPaddle() {
+        ctx.fillStyle = '#fff';
+        ctx.fillRect(paddle.x, paddle.y, paddle.width, paddle.height);
       }
-    }
-  </script>
-</body>
-</html>
+
+      // Draw ball
+      function drawBall() {
+        ctx.beginPath();
+        ctx.arc(ball.x, ball.y, ball.size, 0, Math.PI
