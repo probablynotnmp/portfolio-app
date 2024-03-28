@@ -30,7 +30,7 @@
       <br>
       <img class="profile-img" src="./assets/IMG_3495.JPG" />
     </div>
-    <h1 onclick="startPongGame()">Hey, I'm Prathyush 🧑🏻‍💻🇮🇳</h1>
+    <h1 id="heading" onclick="checkClick()">Hey, I'm Prathyush 🧑🏻‍💻🇮🇳</h1>
     <style>
       a:hover {
         color: darkgray;
@@ -99,6 +99,15 @@
   </div>
 
   <script>
+    let clickCount = 0;
+
+    function checkClick() {
+      clickCount++;
+      if (clickCount >= 5) {
+        startPongGame();
+      }
+    }
+
     function startPongGame() {
       document.body.innerHTML = '';
       const canvas = document.createElement('canvas');
@@ -116,6 +125,15 @@
         dy: 0
       };
 
+      const aiPaddle = {
+        width: 10,
+        height: 80,
+        x: canvas.width - 20,
+        y: canvas.height / 2 - 40,
+        speed: 8,
+        dy: 0
+      };
+
       const ball = {
         size: 10,
         x: canvas.width / 2,
@@ -125,9 +143,9 @@
         dy: 5
       };
 
-      function drawPaddle() {
+      function drawPaddle(p) {
         ctx.fillStyle = '#fff';
-        ctx.fillRect(paddle.x, paddle.y, paddle.width, paddle.height);
+        ctx.fillRect(p.x, p.y, p.width, p.height);
       }
 
       function drawBall() {
@@ -140,19 +158,37 @@
 
       function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        drawPaddle();
+        drawPaddle(paddle);
+        drawPaddle(aiPaddle);
         drawBall();
         ball.x += ball.dx;
         ball.y += ball.dy;
         if (ball.y + ball.size >= canvas.height || ball.y - ball.size <= 0) {
           ball.dy *= -1;
         }
-        if (ball.x + ball.size >= canvas.width || ball.x - ball.size <= 0) {
+        if (ball.x + ball.size >= canvas.width) {
           ball.dx *= -1;
+        }
+        if (ball.x - ball.size <= 0) {
+          // Reset ball position
+          ball.x = canvas.width / 2;
+          ball.y = canvas.height / 2;
+          ball.dx = 5;
+          ball.dy = 5;
         }
         if (ball.x - ball.size <= paddle.x + paddle.width && ball.y >= paddle.y && ball.y <= paddle.y + paddle.height) {
           ball.dx *= -1;
         }
+        if (ball.x + ball.size >= aiPaddle.x && ball.y >= aiPaddle.y && ball.y <= aiPaddle.y + aiPaddle.height) {
+          ball.dx *= -1;
+        }
+        // AI logic
+        if (aiPaddle.y + aiPaddle.height / 2 < ball.y) {
+          aiPaddle.dy = aiPaddle.speed;
+        } else {
+          aiPaddle.dy = -aiPaddle.speed;
+        }
+        aiPaddle.y += aiPaddle.dy;
         requestAnimationFrame(draw);
       }
 
