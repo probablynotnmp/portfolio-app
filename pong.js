@@ -1,3 +1,14 @@
+let clickCount = 0;
+let playerScore = 0;
+let aiScore = 0;
+
+function checkClick() {
+  clickCount++;
+  if (clickCount >= 5) {
+    startPongGame();
+  }
+}
+
 function startPongGame() {
   document.body.innerHTML = '';
   const container = document.createElement('div');
