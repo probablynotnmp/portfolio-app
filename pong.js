@@ -1,4 +1,6 @@
 let clickCount = 0;
+let playerScore = 0;
+let aiScore = 0;
 
 function checkClick() {
   clickCount++;
@@ -11,8 +13,14 @@ function startPongGame() {
   document.body.innerHTML = '';
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
-  canvas.width = 600;
-  canvas.height = 400;
+  const screenWidth = window.innerWidth * 0.7; // 70% of the screen width
+  const screenHeight = window.innerHeight * 0.7; // 70% of the screen height
+  const canvasWidth = Math.min(screenWidth, screenHeight * 1.5); // Set canvas width to maintain aspect ratio
+  const canvasHeight = canvasWidth * 2 / 3; // Set canvas height to maintain aspect ratio
+  canvas.width = canvasWidth;
+  canvas.height = canvasHeight;
+  canvas.style.display = 'block'; // Make the canvas a block-level element
+  canvas.style.margin = 'auto'; // Center the canvas horizontally
   document.body.appendChild(canvas);
 
   const paddle = {
@@ -55,25 +63,30 @@ function startPongGame() {
     ctx.closePath();
   }
 
+  function drawScore() {
+    ctx.font = '30px Arial';
+    ctx.fillStyle = '#fff';
+    ctx.fillText(`Player: ${playerScore} - AI: ${aiScore}`, 20, 40);
+  }
+
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawPaddle(paddle);
     drawPaddle(aiPaddle);
     drawBall();
+    drawScore(); // Draw score
     ball.x += ball.dx;
     ball.y += ball.dy;
     if (ball.y + ball.size >= canvas.height || ball.y - ball.size <= 0) {
       ball.dy *= -1;
     }
     if (ball.x + ball.size >= canvas.width) {
-      ball.dx *= -1;
+      playerScore++; // Player scores
+      resetBall();
     }
     if (ball.x - ball.size <= 0) {
-      // Reset ball position
-      ball.x = canvas.width / 2;
-      ball.y = canvas.height / 2;
-      ball.dx = 5;
-      ball.dy = 5;
+      aiScore++; // AI scores
+      resetBall();
     }
     if (ball.x - ball.size <= paddle.x + paddle.width && ball.y >= paddle.y && ball.y <= paddle.y + paddle.height) {
       ball.dx *= -1;
@@ -89,6 +102,13 @@ function startPongGame() {
     }
     aiPaddle.y += aiPaddle.dy;
     requestAnimationFrame(draw);
+  }
+
+  function resetBall() {
+    ball.x = canvas.width / 2;
+    ball.y = canvas.height / 2;
+    ball.dx = Math.random() > 0.5 ? -ball.speed : ball.speed;
+    ball.dy = Math.random() > 0.5 ? -ball.speed : ball.speed;
   }
 
   draw();
