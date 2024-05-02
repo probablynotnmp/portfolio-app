@@ -1,27 +1,32 @@
-let clickCount = 0;
-let playerScore = 0;
-let aiScore = 0;
-
-function checkClick() {
-  clickCount++;
-  if (clickCount >= 5) {
-    startPongGame();
-  }
-}
-
 function startPongGame() {
   document.body.innerHTML = '';
+  const container = document.createElement('div');
+  container.style.display = 'flex';
+  container.style.flexDirection = 'column';
+  container.style.alignItems = 'center';
+  document.body.appendChild(container);
+
+  const scoreboard = document.createElement('div');
+  scoreboard.style.font = '30px Arial';
+  scoreboard.style.color = '#fff';
+  container.appendChild(scoreboard);
+
+  const canvasContainer = document.createElement('div');
+  canvasContainer.style.position = 'relative';
+  container.appendChild(canvasContainer);
+
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
   const screenWidth = window.innerWidth * 0.7; // 70% of the screen width
   const screenHeight = window.innerHeight * 0.7; // 70% of the screen height
   const canvasWidth = Math.min(screenWidth, screenHeight * 1.5); // Set canvas width to maintain aspect ratio
   const canvasHeight = canvasWidth * 2 / 3; // Set canvas height to maintain aspect ratio
+  const padding = (screenHeight - canvasHeight) / 2; // Calculate padding size
   canvas.width = canvasWidth;
   canvas.height = canvasHeight;
   canvas.style.display = 'block'; // Make the canvas a block-level element
-  canvas.style.margin = 'auto'; // Center the canvas horizontally
-  document.body.appendChild(canvas);
+  canvas.style.marginTop = padding + 'px'; // Apply padding to the top
+  canvasContainer.appendChild(canvas);
 
   const paddle = {
     width: 10,
@@ -64,9 +69,7 @@ function startPongGame() {
   }
 
   function drawScore() {
-    ctx.font = '30px Arial';
-    ctx.fillStyle = '#fff';
-    ctx.fillText(`Player: ${playerScore} - AI: ${aiScore}`, 20, 40);
+    scoreboard.textContent = `Player: ${playerScore} - PR: ${aiScore}`;
   }
 
   function draw() {
@@ -85,7 +88,7 @@ function startPongGame() {
       resetBall();
     }
     if (ball.x - ball.size <= 0) {
-      aiScore++; // AI scores
+      aiScore++; // PR scores
       resetBall();
     }
     if (ball.x - ball.size <= paddle.x + paddle.width && ball.y >= paddle.y && ball.y <= paddle.y + paddle.height) {
@@ -95,10 +98,18 @@ function startPongGame() {
       ball.dx *= -1;
     }
     // AI logic
-    if (aiPaddle.y + aiPaddle.height / 2 < ball.y) {
-      aiPaddle.dy = aiPaddle.speed;
+    if (ball.x > canvas.width / 2) {
+      if (aiPaddle.y + aiPaddle.height / 2 < ball.y) {
+        aiPaddle.dy = aiPaddle.speed;
+      } else {
+        aiPaddle.dy = -aiPaddle.speed;
+      }
     } else {
-      aiPaddle.dy = -aiPaddle.speed;
+      if (aiPaddle.y + aiPaddle.height / 2 < canvas.height / 2) {
+        aiPaddle.dy = aiPaddle.speed;
+      } else {
+        aiPaddle.dy = -aiPaddle.speed;
+      }
     }
     aiPaddle.y += aiPaddle.dy;
     requestAnimationFrame(draw);
