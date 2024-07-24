@@ -1,6 +1,6 @@
 ## Hi There! 🙋‍♂️
 
-What brings you here? this is just the repo for my website, it's old and boring.
+What brings you here? this is just a repo for my old personal website, it's too simple and boring.
 
 Dw I'm in the works of making a new one and I'll release it soon, I promise (ie. If my procrastination gives me some break)
 
