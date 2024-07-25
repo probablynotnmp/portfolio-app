@@ -55,7 +55,6 @@ button {
   background-color: #333333; /* Darken color on hover */
 }
 
-
 /* HERO */
 .hero {
   text-align: center;
@@ -110,7 +109,6 @@ h2 {
   background-color: #333333; /* Darken color on hover */
 }
 
-
 /* ABOUT */
 .about-wrapper,
 .project-wrapper,
@@ -143,14 +141,38 @@ h2 {
   flex-wrap: wrap;
 }
 
-.about-wrapper .skills ul li {
-  border: 2px solid #2d2d2d;
-  width: max-content;
-  padding: 3px 10px;
-  border-radius: 12px;
-  margin: 7px;
-  margin-left: 0;
-  font-weight: 500;
+.skills li {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px;
+  background: rgb(25, 31, 38);
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.skills li::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.6);
+  transform: translate(-50%, -50%) rotate(45deg);
+  transition: all 0.5s ease-in-out;
+  pointer-events: none;
+}
+
+.skills li:hover::before {
+  width: 300%;
+  height: 300%;
+}
+
+.skills li:hover {
+  background: #32383e;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
 }
 
 /* PROJECTS */
@@ -174,6 +196,7 @@ h2 {
   width: 100%;
 }
 
+/* SOCIALS */
 .socials-wrapper {
   line-height: 30px;
 }
@@ -208,39 +231,4 @@ h2 {
   .projects ul li {
     width: 100%;
   }
-}
-
-.skills li {
-  display: inline-block;
-  margin: 10px;
-  padding: 10px;
-  background: #f0f0f0;
-  border-radius: 5px;
-  transition: all 0.3s ease-in-out;
-  position: relative;
-  overflow: hidden;
-  color: #000;
-}
-
-.skills li::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  background: rgba(255, 255, 255, 0.6);
-  transform: translate(-50%, -50%) rotate(45deg);
-  transition: all 0.3s ease-in-out;
-  pointer-events: none;
-}
-
-.skills li:hover::before {
-  width: 300%;
-  height: 300%;
-}
-
-.skills li:hover {
-  background: #e0e0e0;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
 }
