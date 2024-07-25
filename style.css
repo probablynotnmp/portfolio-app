@@ -174,7 +174,6 @@ h2 {
   width: 100%;
 }
 
-/* SOCIALS */
 .socials-wrapper {
   line-height: 30px;
 }
@@ -209,4 +208,39 @@ h2 {
   .projects ul li {
     width: 100%;
   }
+}
+
+.skills li {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px;
+  background: #f0f0f0;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  color: #000;
+}
+
+.skills li::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.6);
+  transform: translate(-50%, -50%) rotate(45deg);
+  transition: all 0.5s ease-in-out;
+  pointer-events: none;
+}
+
+.skills li:hover::before {
+  width: 300%;
+  height: 300%;
+}
+
+.skills li:hover {
+  background: #e0e0e0;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
 }
