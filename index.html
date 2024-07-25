@@ -64,7 +64,26 @@
       </div>
       <div class="skills col">
         <h2>My Skills</h2>
-        <div id="skills-container"></div>
+        <ul>
+          <li>Python</li>
+          <li>C++</li>
+          <li>R</li>
+          <li>Django</li>
+          <li>MongoDB</li>
+          <li>SQL</li>
+          <li>TensorFlow</li>
+          <li>PyTorch</li>
+          <li>OpenCV</li>
+          <li>Scikit-Learn</li>
+          <li>Keras</li>
+          <li>Hadoop</li>
+          <li>PySpark</li>
+          <li>Microsoft Azure</li>
+          <li>AWS</li>
+          <li>Excel</li>
+          <li>Tableau</li>
+          <li>Power BI</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -86,30 +105,5 @@
   </div>
 
   <script src="./pong.js"></script>
-  <script>
-    const skills = {
-      "Programming Languages": ["Python", "C++", "R"],
-      "Frameworks and Libraries": ["Django", "TensorFlow", "PyTorch", "OpenCV", "Scikit-Learn", "Keras"],
-      "Databases": ["MongoDB", "SQL"],
-      "Big Data": ["Hadoop", "PySpark"],
-      "Cloud Platforms": ["Microsoft Azure", "AWS"],
-      "Data Visualization": ["Excel", "Tableau", "Power BI"]
-    };
-
-    const skillsContainer = document.getElementById("skills-container");
-
-    for (const category in skills) {
-      const categoryDiv = document.createElement("div");
-      categoryDiv.innerHTML = `<h3>${category}</h3>`;
-      const ul = document.createElement("ul");
-      skills[category].forEach(skill => {
-        const li = document.createElement("li");
-        li.textContent = skill;
-        ul.appendChild(li);
-      });
-      categoryDiv.appendChild(ul);
-      skillsContainer.appendChild(categoryDiv);
-    }
-  </script>
 </body>
 </html>
