@@ -117,16 +117,16 @@
       const status = document.getElementById('availability-status').value;
       const indicator = document.getElementById('availability-indicator');
       const text = document.getElementById('availability-text');
-      if (status === 'available') {
-        indicator.classList.remove('available');
-        indicator.classList.add('unavailable');
-        text.textContent = 'Unavailable';
-        document.getElementById('availability-status').value = 'unavailable';
+      if (status === 'availabletowork') {
+        indicator.classList.remove('availabletowork');
+        indicator.classList.add('unavailabletowork');
+        text.textContent = 'Unavailable to work';
+        document.getElementById('availability-status').value = 'unavailabletowork';
       } else {
-        indicator.classList.remove('unavailable');
-        indicator.classList.add('available');
-        text.textContent = 'Available';
-        document.getElementById('availability-status').value = 'available';
+        indicator.classList.remove('unavailabletowork');
+        indicator.classList.add('availabletowork');
+        text.textContent = 'Available to work';
+        document.getElementById('availability-status').value = 'availabletowork';
       }
     }
 
@@ -135,12 +135,12 @@
       const status = document.getElementById('availability-status').value;
       const indicator = document.getElementById('availability-indicator');
       const text = document.getElementById('availability-text');
-      if (status === 'available') {
-        indicator.classList.add('available');
-        text.textContent = 'Available';
+      if (status === 'availabletowork') {
+        indicator.classList.add('availabletowork');
+        text.textContent = 'Available to work';
       } else {
-        indicator.classList.add('unavailable');
-        text.textContent = 'Unavailable';
+        indicator.classList.add('unavailabletowork');
+        text.textContent = 'Unavailable to work';
       }
     })();
   </script>
