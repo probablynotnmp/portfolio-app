@@ -18,6 +18,10 @@
     <div class="header-wrapper">
       <h3><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"><span style="text-decoration: none;">🦉</span> Prathyush N. Mohan</a></h3>
       <nav>
+        <div class="availability">
+          <span id="availability-indicator" class="indicator available"></span>
+          <span id="availability-text">Available to work</span>
+        </div>
         <a href="#contact" class="contact-link">
           <button>Contact me</button>
         </a>
@@ -38,7 +42,7 @@
     </style>
     <p>
       <a href="https://www.mesce.ac.in/home">Student</a>, 
-      <a href="https://github.com/probablynotnmp">Developer</a>, 
+      <a href="https://github.com/probablynotnmp?tab=repositories">Developer</a>, 
       <a href="https://www.behance.net/prathyush-nm">Designer</a>
     </p>
     <div style="text-align: center;">
@@ -94,10 +98,6 @@
         <h2>Contact Me</h2>
         <p>contact.prathyushmohan@gmail.com</p>
         <p>Palakkad, India</p>
-        <div class="availability">
-          <span id="availability-indicator" class="indicator available"></span>
-          <span id="availability-text">Available</span>
-        </div>
       </div>
       <div class="social-icons">
         <a href="https://github.com/probablynotnmp"><img src="./assets/github.svg" /></a>
@@ -108,8 +108,7 @@
     </div>
   </div>
 
-  <script src="./pong.js"></script>
-    <input type="hidden" id="availability-status" value="available">
+  <input type="hidden" id="availability-status" value="available">
 
   <script src="./pong.js"></script>
   <script>
@@ -117,16 +116,16 @@
       const status = document.getElementById('availability-status').value;
       const indicator = document.getElementById('availability-indicator');
       const text = document.getElementById('availability-text');
-      if (status === 'availabletowork') {
-        indicator.classList.remove('availabletowork');
-        indicator.classList.add('unavailabletowork');
-        text.textContent = 'Available to work';
-        document.getElementById('availability-status').value = 'unavailabletowork';
+      if (status === 'available') {
+        indicator.classList.remove('available');
+        indicator.classList.add('unavailable');
+        text.textContent = 'Unavailable';
+        document.getElementById('availability-status').value = 'unavailable';
       } else {
-        indicator.classList.remove('unavailabletowork');
-        indicator.classList.add('availabletowork');
+        indicator.classList.remove('unavailable');
+        indicator.classList.add('available');
         text.textContent = 'Available to work';
-        document.getElementById('availability-status').value = 'availabletowork';
+        document.getElementById('availability-status').value = 'available';
       }
     }
 
@@ -135,12 +134,12 @@
       const status = document.getElementById('availability-status').value;
       const indicator = document.getElementById('availability-indicator');
       const text = document.getElementById('availability-text');
-      if (status === 'availabletowork') {
-        indicator.classList.add('availabletowork');
+      if (status === 'available') {
+        indicator.classList.add('available');
         text.textContent = 'Available to work';
       } else {
-        indicator.classList.add('unavailabletowork');
-        text.textContent = 'Available to work';
+        indicator.classList.add('unavailable');
+        text.textContent = 'Unavailable';
       }
     })();
   </script>
