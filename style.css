@@ -150,7 +150,7 @@ h2 {
   margin-left: 0;
   font-weight: 500;
   background: rgb(25, 31, 38);
-  transition: all 0.3s ease-in-out;
+  transition: all 0.1s ease-in-out;
   position: relative;
   overflow: hidden;
 }
