@@ -231,7 +231,7 @@ h2 {
 .availability {
   display: flex;
   align-items: center;
-  margin-right: 20px;
+  margin-top: 10px;
 }
 
 .indicator {
@@ -239,7 +239,8 @@ h2 {
   height: 20px;
   border-radius: 50%;
   margin-right: 10px;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .indicator.available {
@@ -251,4 +252,3 @@ h2 {
   background-color: red;
   box-shadow: 0 0 10px red;
 }
-
