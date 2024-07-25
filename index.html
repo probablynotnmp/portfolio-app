@@ -18,10 +18,6 @@
     <div class="header-wrapper">
       <h3><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"><span style="text-decoration: none;">🦉</span> Prathyush N. Mohan</a></h3>
       <nav>
-        <div class="availability">
-          <span id="availability-indicator" class="indicator available"></span>
-          <span id="availability-text">Available to work</span>
-        </div>
         <a href="#contact" class="contact-link">
           <button>Contact me</button>
         </a>
@@ -98,6 +94,10 @@
         <h2>Contact Me</h2>
         <p>contact.prathyushmohan@gmail.com</p>
         <p>Palakkad, India</p>
+        <div class="availability">
+          <span id="availability-indicator" class="indicator available"></span>
+          <span id="availability-text">Available</span>
+        </div>
       </div>
       <div class="social-icons">
         <a href="https://github.com/probablynotnmp"><img src="./assets/github.svg" /></a>
@@ -108,10 +108,8 @@
     </div>
   </div>
 
-  <input type="hidden" id="availability-status" value="available">
-
   <script src="./pong.js"></script>
-  <script>
+ <script>
     function toggleAvailability() {
       const status = document.getElementById('availability-status').value;
       const indicator = document.getElementById('availability-indicator');
@@ -142,6 +140,6 @@
         text.textContent = 'Unavailable';
       }
     })();
-  </script>
+</script>
 </body>
 </html>
