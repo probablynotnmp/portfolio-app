@@ -94,6 +94,10 @@
         <h2>Contact Me</h2>
         <p>contact.prathyushmohan@gmail.com</p>
         <p>Palakkad, India</p>
+        <div class="availability">
+          <span id="availability-indicator" class="indicator available"></span>
+          <span id="availability-text">Available</span>
+        </div>
       </div>
       <div class="social-icons">
         <a href="https://github.com/probablynotnmp"><img src="./assets/github.svg" /></a>
@@ -105,5 +109,22 @@
   </div>
 
   <script src="./pong.js"></script>
+  <script>
+    function toggleAvailability() {
+      const indicator = document.getElementById('availability-indicator');
+      const text = document.getElementById('availability-text');
+      if (indicator.classList.contains('available')) {
+        indicator.classList.remove('available');
+        indicator.classList.add('unavailable');
+        text.textContent = 'Unavailable';
+      } else {
+        indicator.classList.remove('unavailable');
+        indicator.classList.add('available');
+        text.textContent = 'Available';
+      }
+    }
+
+    document.getElementById('availability-indicator').addEventListener('click', toggleAvailability);
+  </script>
 </body>
 </html>
