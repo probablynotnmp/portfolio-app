@@ -114,16 +114,16 @@
       const status = document.getElementById('availability-status').value;
       const indicator = document.getElementById('availability-indicator');
       const text = document.getElementById('availability-text');
-      if (status === 'available') {
-        indicator.classList.remove('available');
+      if (status === 'availabletowork') {
+        indicator.classList.remove('availabletowork');
         indicator.classList.add('unavailable');
         text.textContent = 'Unavailable';
         document.getElementById('availability-status').value = 'unavailable';
       } else {
         indicator.classList.remove('unavailable');
-        indicator.classList.add('available');
+        indicator.classList.add('availabletowork');
         text.textContent = 'Available to work';
-        document.getElementById('availability-status').value = 'available';
+        document.getElementById('availability-status').value = 'availabletowork';
       }
     }
 
@@ -132,8 +132,8 @@
       const status = document.getElementById('availability-status').value;
       const indicator = document.getElementById('availability-indicator');
       const text = document.getElementById('availability-text');
-      if (status === 'available') {
-        indicator.classList.add('available');
+      if (status === 'availabletowork') {
+        indicator.classList.add('availabletowork');
         text.textContent = 'Available to work';
       } else {
         indicator.classList.add('unavailable');
