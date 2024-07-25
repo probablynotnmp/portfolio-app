@@ -141,18 +141,21 @@ h2 {
   flex-wrap: wrap;
 }
 
-.skills li {
-  display: inline-block;
-  margin: 10px;
-  padding: 10px;
+.about-wrapper .skills ul li {
+  border: 2px solid #2d2d2d;
+  width: max-content;
+  padding: 3px 10px;
+  border-radius: 12px;
+  margin: 7px;
+  margin-left: 0;
+  font-weight: 500;
   background: rgb(25, 31, 38);
-  border-radius: 5px;
   transition: all 0.3s ease-in-out;
   position: relative;
   overflow: hidden;
 }
 
-.skills li::before {
+.about-wrapper .skills ul li::before {
   content: '';
   position: absolute;
   top: 50%;
@@ -165,12 +168,12 @@ h2 {
   pointer-events: none;
 }
 
-.skills li:hover::before {
+.about-wrapper .skills ul li:hover::before {
   width: 300%;
   height: 300%;
 }
 
-.skills li:hover {
+.about-wrapper .skills ul li:hover {
   background: #32383e;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
 }
