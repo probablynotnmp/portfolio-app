@@ -18,6 +18,10 @@
     <div class="header-wrapper">
       <h3><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"><span style="text-decoration: none;">🦉</span> Prathyush N. Mohan</a></h3>
       <nav>
+        <div class="availability">
+          <span id="availability-indicator" class="indicator available"></span>
+          <span id="availability-text">Available</span>
+        </div>
         <a href="#contact" class="contact-link">
           <button>Contact me</button>
         </a>
@@ -94,10 +98,6 @@
         <h2>Contact Me</h2>
         <p>contact.prathyushmohan@gmail.com</p>
         <p>Palakkad, India</p>
-        <div class="availability">
-          <span id="availability-indicator" class="indicator available"></span>
-          <span id="availability-text">Available</span>
-        </div>
       </div>
       <div class="social-icons">
         <a href="https://github.com/probablynotnmp"><img src="./assets/github.svg" /></a>
@@ -108,23 +108,40 @@
     </div>
   </div>
 
+  <input type="hidden" id="availability-status" value="available">
+
   <script src="./pong.js"></script>
   <script>
     function toggleAvailability() {
+      const status = document.getElementById('availability-status').value;
       const indicator = document.getElementById('availability-indicator');
       const text = document.getElementById('availability-text');
-      if (indicator.classList.contains('available')) {
+      if (status === 'available') {
         indicator.classList.remove('available');
         indicator.classList.add('unavailable');
         text.textContent = 'Unavailable';
+        document.getElementById('availability-status').value = 'unavailable';
       } else {
         indicator.classList.remove('unavailable');
         indicator.classList.add('available');
         text.textContent = 'Available';
+        document.getElementById('availability-status').value = 'available';
       }
     }
 
-    document.getElementById('availability-indicator').addEventListener('click', toggleAvailability);
+    // Initialize availability based on hidden input field
+    (function initializeAvailability() {
+      const status = document.getElementById('availability-status').value;
+      const indicator = document.getElementById('availability-indicator');
+      const text = document.getElementById('availability-text');
+      if (status === 'available') {
+        indicator.classList.add('available');
+        text.textContent = 'Available';
+      } else {
+        indicator.classList.add('unavailable');
+        text.textContent = 'Unavailable';
+      }
+    })();
   </script>
 </body>
 </html>
