@@ -122,7 +122,7 @@
       } else {
         indicator.classList.remove('unavailable');
         indicator.classList.add('available');
-        text.textContent = 'Available';
+        text.textContent = 'Available to work';
         document.getElementById('availability-status').value = 'available';
       }
     }
@@ -134,7 +134,7 @@
       const text = document.getElementById('availability-text');
       if (status === 'available') {
         indicator.classList.add('available');
-        text.textContent = 'Available to work';
+        text.textContent = 'Available';
       } else {
         indicator.classList.add('unavailable');
         text.textContent = 'Unavailable';
