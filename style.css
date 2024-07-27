@@ -162,14 +162,19 @@ h2 {
   height: 100%;
   width: 100%;
   background: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.1));
-  transition: left 0.5s ease-in-out;
 }
 
 .about-wrapper .skills ul li:hover::before {
-  left: 100%;
-  transition: left 0.5s ease-in-out;
-  /* Add individual transition property to ensure each animation is independent */
-  will-change: left;
+  animation: shine 0.5s ease-in-out;
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
 }
 
 /* PROJECTS */
@@ -206,7 +211,7 @@ h2 {
   border-radius: 12px;
 }
 
-socials-wrapper .social-icons img:hover {
+.socials-wrapper .social-icons img:hover {
   background: #2d2d2d;
 }
 
