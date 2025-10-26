@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="./assets/PRCROWN_dark.png" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/png" href="./assets/PRCROWN_light.png" media="(prefers-color-scheme: dark)">
   <link rel="icon" type="image/png" href="./assets/PRCROWN.png" />
   <link rel="stylesheet" href="./style.css" />
   <title>Prathyush N M</title>
@@ -45,7 +47,7 @@
       <br>
       <br>
       <div>
-        <button class="resume-btn" onclick="window.location.href='./assets/Prathyush-NM-Resume.pdf'">Download Resume</button>
+        <button class="resume-btn" onclick="window.location.href='assets/Prathyush-N-M-Resume.pdf'">Download Resume</button>
         <button class="projects-btn" onclick="window.location.href='https://github.com/probablynotnmp?tab=repositories'" style="margin-left: 10px;">View my Projects</button>
       </div>
     </div>
@@ -56,16 +58,14 @@
       <div class="col">
         <h2>About Me</h2>
         <p>
-          I'm currently doing my Bachelor's in Artificial Intelligence and Data Science at APJ Abdul Kalam Technological University, a journey that's not only shaping my academic prowess but also fueling my passion for technology. 
-        </p>
-        <p>
-          My adventure in this realm is more than just obtaining a degree, it's about making a mark in the field of AI, ML & DL, areas that I am deeply passionate about. 
+        I have recently completed my Bachelor's in Artificial Intelligence and Data Science from APJ Abdul Kalam Technological University, a journey that has not only shaped my academic prowess but also fueled my passion for technology. My adventure in this realm is more than just obtaining a degree; it's about making a mark in the field of AI, ML, and DL, areas that I am deeply passionate about.
         </p>
       </div>
       <div class="skills col">
         <h2>My Skills</h2>
         <ul>
           <li>Python</li>
+          <li>Java</li>
           <li>C++</li>
           <li>JS</li>
           <li>R</li>
@@ -78,11 +78,11 @@
           <li>Keras</li>
           <li>Hadoop</li>
           <li>PySpark</li>
-          <li>Microsoft Azure</li>
-          <li>AWS</li>
           <li>Excel</li>
           <li>Tableau</li>
           <li>Power BI</li>
+          <li>Azure</li>
+          <li>GCP</li>
         </ul>
       </div>
     </div>
@@ -95,25 +95,39 @@
         <p>contact.prathyushmohan@gmail.com</p>
         <p>Palakkad, India</p>
         <div class="availability">
+          <input type="hidden" id="availability-status" value="availabletowork">
           <span id="availability-indicator" class="indicator available"></span>
           <span id="availability-text">Available to work</span>
         </div>
       </div>
       <div class="social-icons">
+        <a href="https://www.linkedin.com/in/prathyushnm"><img src="./assets/linkedin.svg" /></a>
         <a href="https://github.com/probablynotnmp"><img src="./assets/github.svg" /></a>
-        <a href="https://x.com/prathyooosh"><img src="./assets/twitter.svg" /></a>
-        <a href="https://www.linkedin.com/in/prathyushnm/"><img src="./assets/linkedin.svg" /></a>
+        <a href="https://x.com/prathyushnm"><img src="./assets/twitter.svg" /></a>
         <a href="mailto:contact.prathyushmohan@gmail.com"><img src="./assets/mail.svg" /></a>
       </div>
     </div>
   </div>
 
+  <!-- POPUP -->
+  <div id="new-site-popup" class="popup">
+    <div class="popup-content">
+      <button class="close-popup" id="close-popup">&times;</button>
+      <h3>👋 Hey there!</h3>
+      <p>You’re viewing my old website — some of the information here might be outdated or no longer relevant</p>
+      <button class="visit-btn" onclick="window.location.href='https://prathyush.dev'">Visit the new site</button>
+    </div>
+  </div>
+
   <script src="./pong.js"></script>
-  <script>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    // --- Availability Logic ---
     function toggleAvailability() {
       const status = document.getElementById('availability-status').value;
       const indicator = document.getElementById('availability-indicator');
       const text = document.getElementById('availability-text');
+
       if (status === 'availabletowork') {
         indicator.classList.remove('availabletowork');
         indicator.classList.add('unavailable');
@@ -127,19 +141,52 @@
       }
     }
 
-    // Initialize availability based on hidden input field
+    // Initialise the current availability state
     (function initializeAvailability() {
-      const status = document.getElementById('availability-status').value;
+      const status = document.getElementById('availability-status')?.value;
       const indicator = document.getElementById('availability-indicator');
       const text = document.getElementById('availability-text');
-      if (status === 'availabletowork') {
-        indicator.classList.add('availabletowork');
-        text.textContent = 'Available to work';
-      } else {
-        indicator.classList.add('unavailable');
-        text.textContent = 'Unavailable';
+
+      if (indicator && text) {
+        if (status === 'availabletowork') {
+          indicator.classList.add('availabletowork');
+          text.textContent = 'Available to work';
+        } else {
+          indicator.classList.add('unavailable');
+          text.textContent = 'Unavailable';
+        }
       }
     })();
-  </script>
+
+    // Make toggle function globally accessible
+    window.toggleAvailability = toggleAvailability;
+
+    // --- Popup Logic ---
+    const popup = document.getElementById('new-site-popup');
+    const closeBtn = document.getElementById('close-popup');
+
+    // Check if popup was closed during this browser session
+    const popupClosed = sessionStorage.getItem('popupClosed');
+
+    // Show popup after 6 seconds if not closed this session
+    setTimeout(() => {
+      if (popup && !popupClosed) {
+        popup.classList.add('show');
+      }
+    }, 6000);
+
+    // Close popup with fade-out animation and mark as closed for session
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        if (popup) {
+          popup.classList.remove('show');
+          popup.classList.add('hide');
+          sessionStorage.setItem('popupClosed', 'true');
+          setTimeout(() => (popup.style.display = 'none'), 400);
+        }
+      });
+    }
+  });
+</script>
 </body>
 </html>
